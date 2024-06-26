@@ -4,7 +4,7 @@ import connectDB from "./db/index.js";
 import { app } from "./app.js";
 
 dotenv.config({
-  path: "./env",
+  path: "./.env",
 });
 
 connectDB()
@@ -17,21 +17,3 @@ connectDB()
     console.log("Mongo db connection failed", err);
   });
 
-//this is immediately invoked function common syntax used for connecting db(old way)
-
-// const app = express();
-
-// (async () => {
-//   try {
-//     await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`);
-//     app.on("error:", (err) => {
-//       console.log("ERR", err);
-//       throw err;
-//     });
-//     app.listen(process.env.PORT, () => {
-//       console.log(`App is listening on port ${process.env.PORT}`);
-//     });
-//   } catch (err) {
-//     console.log("ERROR:", err);
-//   }
-// })();

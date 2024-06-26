@@ -55,7 +55,7 @@ const userSchema = new Schema(
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     //adding if condition to encrypt password only when password in modified and not on every other field save
-    this.password = bcrypt(this.password, 10);
+    this.password = await bcrypt.hash(this.password, 10);
     next();
   }
 }); //pre is a mongoose hook to execute code just before data is saved in db
